@@ -11,10 +11,19 @@ public class HomePage extends BasePage {
     public static HomePage instance;
 
     private By logo = By.id("logo");
-    private By signInButton = By.id("btn1");
+    private By clickSignInButton = By.id("btn1");
     private By skipSignInButton = By.id("btn2");
-    private By emailField = By.id("email");
-    private By nextButton = By.id("entering");
+   private By emailField = By.id("email");
+    private By nextButton = By.id("enterimg");
+
+    //SignIn page
+    private By userName = By.xpath("//input[@ng-model='Email']");
+    private By passwordField = By.xpath("//input[@ng-model='Password']");
+    private By emailField2 = By.xpath("//input[@ng-model='Email']");
+    private By pressEnterButton = By.id("enterbtn");
+
+
+
 
     private HomePage() {
 
@@ -33,9 +42,10 @@ public class HomePage extends BasePage {
 
     }
 
+
     public void clickSignInButton() {
-        LOG.info("Click skip sign in button");
-        driver.findElement(skipSignInButton).click();
+        LOG.info("Click sign in button");
+        driver.findElement(clickSignInButton).click();
 
     }
 
@@ -53,7 +63,25 @@ public class HomePage extends BasePage {
         LOG.info("Check email field");
         driver.findElement(emailField).sendKeys(email);
     }
+    public void clickNextButton(){
+        LOG.info("Click Next button");
+        driver.findElement(nextButton).click();
+    }
+
+
+    public void checkPasswordField(String password) {
+        LOG.info("Check password field");
+        driver.findElement(passwordField).sendKeys(password);
+    }
+    public void insertEmail(){
+        LOG.info("Insert email field");
+        driver.findElement(emailField2).sendKeys("abcd@.com");
+    }
+
+
 }
+
+
 
 
 

@@ -17,10 +17,34 @@ public class BasePage {
         driver.get(url);
         LOG.info("Open browser");
         driver.manage().window().maximize();
+        LOG.info("Click the browser back button");
+        driver.navigate().back();
     }
 
     public static void tearDown() {
-        LOG.info( "Close the Browser");
+        LOG.info("Close the Browser");
         driver.quit();
+
     }
+    public static void sleep(long ms){
+        try {
+            Thread.sleep(ms);
+        }catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public static String returnBaseUrl(){
+        return "http://demo.automationtesting.in/Index.html";
+    }
+
+    public static String getBaseUrl(){
+        String baseUrl = returnBaseUrl();
+        if (baseUrl != null){
+            return baseUrl.replace("Index.html", "");
+        }
+        return baseUrl;
+    }
+
 }
+
+
